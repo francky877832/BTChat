@@ -89,7 +89,7 @@ def rebuild_index():
 
         print(f"🧠 Reindex triggered by n8n: action={action}, file={filename}")
 
-        build_or_load_index(reindex=True)
+        build_or_load_index(True)
         return jsonify({
             "message": "Index rebuilt successfully",
         }), 200
