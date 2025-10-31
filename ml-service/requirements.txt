@@ -1,0 +1,10 @@
+python-dotenv
+requests
+beautifulsoup4
+llama-index==0.14.4
+langchain>=0.2.0
+groq
+
+flask
+llama-index-llms-groq
+llama-index-embeddings-huggingface

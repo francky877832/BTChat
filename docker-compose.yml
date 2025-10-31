@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: btchat-backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - ml-service
+    environment:
+      - NODE_ENV=development
+      - AI_SERVICE_URL=http://ml-service:5000
+
+  ml-service:
+    build: ./ml-service
+    container_name: btchat-ml
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./ml-service/.env
+    volumes:
+      - ./ml-service:/app             # ton code Python monté dans le conteneur
+      - ./ml-service/db:/app/db       # pour garder les PDFs persistants
+      - ./ml-service/storage:/app/storage  # pour éviter de rebâtir l’index à chaque fois
+    command: python app.py

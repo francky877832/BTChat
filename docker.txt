@@ -1,0 +1,35 @@
+ docker build -t bt-chat-backend . --load
+docker compose up --build - rebuild limage
+
+docker-compose up --build [backend] - demare limage, et build si elle nexiste pas, pas de rebuild
+
+docker compose exec backend npm install axios
+docker compose down ---stoppe et supprime tous les conteinaer
+
+
+
+lancer un docker
+cd ml-service
+docker build -t btchat-ml .
+
+demarrer limage original tel quelle apre le build
+docker run -p 5000:5000 --env-file .env btchat-ml
+
+demarrer limage a jour - (rebuild uniquement si les dependance chanegent)
+docker run -p 5000:5000 --env-file .env -v ${PWD}:/app btchat-ml
+
+
+curl -X POST http://localhost:5000/predict \
+     -H "Content-Type: application/json" \
+     -d '{"message": "Summarize my documents"}'
+
+
+
+
+
+lancer tous les dockers
+docker compose up --build
+
+
+
+
