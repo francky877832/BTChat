@@ -3,9 +3,11 @@ docker compose up --build - rebuild limage
 
 docker-compose up --build [backend] - demare limage, et build si elle nexiste pas, pas de rebuild
 
-docker compose exec backend npm install axios
 docker compose down ---stoppe et supprime tous les conteinaer
 
+istalling a package in the container
+docker exec -it btchat-backend sh
+docker compose exec backend npm install axios
 
 
 lancer un docker
@@ -30,6 +32,13 @@ curl -X POST http://localhost:5000/predict \
 lancer tous les dockers
 docker compose up --build
 
+
+
+
+
+n8n
+docker stop n8n
+docker start n8n
 
 
 

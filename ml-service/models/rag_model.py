@@ -31,7 +31,7 @@ Settings.embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
 index_path = "storage"
 documents_folder = "db"
 
-def build_or_load_index():
+def build_or_load_index(reindex=False):
     from glob import glob
 
     def should_rebuild_index(index_path, documents_folder):
@@ -41,7 +41,7 @@ def build_or_load_index():
                 return False #True
         return False
 
-    if os.path.exists(index_path) and os.listdir(index_path) : #and not should_rebuild_index(index_path, documents_folder):
+    if not reindex and os.path.exists(index_path) and os.listdir(index_path) : #and not should_rebuild_index(index_path, documents_folder):
         start = time.time()
         storage_context = StorageContext.from_defaults(persist_dir=index_path)
         index = load_index_from_storage(storage_context)
