@@ -12,6 +12,7 @@ CORS(app)
 import requests
 
 N8N_WEBHOOK = "http://10.177.30.88:5678/webhook/reindex-trigger"
+#N8N_WEBHOOK = "http://10.177.30.88:5678/webhook-test/reindex-trigger"
 
 def trigger_n8n(action, filename):
     """Appelle le webhook n8n après ajout/suppression d’un PDF"""
@@ -83,11 +84,12 @@ def rebuild_index():
     Cette route est appelée par n8n pour relancer l'indexation IA.
     """
     try:
-        data = request.get_json(force=True)
-        action = data.get("action")
-        filename = data.get("filename")
+        #data = request.get_json(force=True)
+        #action = data.get("action")
+        #filename = data.get("filename")
 
-        print(f"🧠 Reindex triggered by n8n: action={action}, file={filename}")
+        #print(f"Reindex triggered by n8n: action={action}, file={filename}")
+        print(f"Reindex triggered by n8n")
 
         build_or_load_index(True)
         return jsonify({

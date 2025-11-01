@@ -1,4 +1,7 @@
- docker build -t bt-chat-backend . --load
+
+docker run -d --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n n8nio/n8n
+
+docker build -t bt-chat-backend . --load
 docker compose up --build - rebuild limage
 
 docker-compose up --build [backend] - demare limage, et build si elle nexiste pas, pas de rebuild
@@ -39,6 +42,8 @@ docker compose up --build
 n8n
 docker stop n8n
 docker start n8n
+install n8n
+docker run -d --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n n8nio/n8n
 
 
 
